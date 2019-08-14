@@ -23,7 +23,9 @@ templates:
   utter_welcome:
   - text: You're welcome
   utter_what_is_the_company:
-  - text: A community of passionate individuals whose purpose is to revolutionize software design, creation and delivery, while advocating for positive social change.
+  - text: A community of passionate individuals whose purpose is to revolutionize
+      software design, creation and delivery, while advocating for positive social
+      change.
 actions:
 - utter_what_is_the_company
 - utter_welcome

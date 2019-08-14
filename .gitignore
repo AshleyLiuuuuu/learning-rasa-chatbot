@@ -3,3 +3,6 @@
 **/*.db
 **/*.iml
 **/*.pyc
+.venv
+rasa/models
+rasa-cn/models

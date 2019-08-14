@@ -2,9 +2,13 @@
 # https://rasa.com/docs/rasa/nlu/components/
 language: zh
 pipeline:
-  - name: "JiebaTokenizer"
+  - name: "third_party_tokenizer.ThirdPartyTokenizer"
+    third_party_service_endpoint: http://localhost:8080/tokenize
+    type: tokenizer
   - name: "RegexFeaturizer"
-  - name: "CRFEntityExtractor"
+  - name: "third_party_extractor.ThirdPartyEntityExtractor"
+    third_party_service_endpoint: http://localhost:8080/extract
+    type: extractor
   - name: "EntitySynonymMapper"
   - name: "CountVectorsFeaturizer"
   - name: "EmbeddingIntentClassifier"

@@ -7,6 +7,8 @@
 - 是的
 - 是的，谢谢
 - 挺好
+- 不错
+- 还不错
 
 ## intent:deny
 - no
@@ -17,6 +19,8 @@
 - not really
 - 没有
 - 并没有
+- 不好
+- 并不好
 
 ## intent:goodbye
 - bye
@@ -25,6 +29,7 @@
 - see you later
 - 再见
 - 幸会
+- 拜拜
 
 ## intent:greet
 - hey
@@ -50,6 +55,8 @@
 - I'm good
 - 还不错
 - good
+- 还可以
+- 还行
 
 ## intent:mood_unhappy
 - sad
