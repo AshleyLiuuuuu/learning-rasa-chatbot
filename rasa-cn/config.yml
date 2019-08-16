@@ -7,7 +7,7 @@ pipeline:
     type: tokenizer
   - name: "RegexFeaturizer"
   - name: "third_party_extractor.ThirdPartyEntityExtractor"
-    third_party_service_endpoint: http://localhost:8080/extract
+    third_party_service_endpoint: http://localhost:8080/tokenize
     type: extractor
   - name: "EntitySynonymMapper"
   - name: "CountVectorsFeaturizer"

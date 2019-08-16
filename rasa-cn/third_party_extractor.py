@@ -1,3 +1,4 @@
+import json
 import logging
 from typing import Any, Dict, Optional, Text
 
@@ -24,8 +25,9 @@ class ThirdPartyEntityExtractor(EntityExtractor):
 
     def process(self, message: Message, **kwargs: Any) -> None:
         if self.third_party_service_endpoint is not None:
-            req = requests.post(self.third_party_service_endpoint, data={"text": message.text})
-            extracted = req.json()
+            headers = {'Content-type': 'application/json', 'Accept': 'application/json'}
+            req = requests.post(self.third_party_service_endpoint, data=json.dumps({"text": message.text}), headers=headers)
+            extracted = [self.transform_to_extracted(v) for v in req.json() if v["domainType"] != ""]
         else:
             logger.warning(
                 "Third party tokenizer component in pipeline, but no "
@@ -36,3 +38,13 @@ class ThirdPartyEntityExtractor(EntityExtractor):
         message.set(
             "entities", message.get("entities", []) + extracted, add_to_output=True
         )
+
+    @staticmethod
+    def transform_to_extracted(v: Dict[Text, Any]):
+        return {
+            "start": v["start"],
+            "end": v["start"],
+            "value": v["text"],
+            "entity": v["domainType"],
+            "confidence": 1.0,
+        }
