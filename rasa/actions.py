@@ -1,31 +1,64 @@
-# This files contains your custom actions which can be used to run
-# custom Python code.
-#
-# See this guide on how to implement these action:
-# https://rasa.com/docs/rasa/core/actions/#custom-actions/
+from rasa_sdk import Action
+from rasa_sdk.events import SlotSet
+import requests
+import json
 
+def Post_http(temp):
+    post_url = "http://dora-query-engine.leandata.top/query"
+    headers = {'content-type':'application/json'}
+    body = {'q':temp,'modelName':'dm_articles'}
+    _response = requests.post(post_url,data = json.dumps(body),headers = headers)
+    return _response.json()['rows']
+class ActionAnalyseMonthly(Action):
+   def name(self):
+      return "action_month"
+   def run(self,
+           dispatcher,
+           tracker,
+           domain):
+        print(tracker)
+        msg = tracker.latest_message['text']
+        temp = ""
+        name = tracker.latest_message['intent'].get("name")
+        if(name is None):
+             temp = msg
+        else:
+            value = tracker.get_slot('keywords')
+            if(value):
+                 temp = "{} sort:term:asc group by publish_time monthly".format(value)
+            else:
+                temp = msg
+        return_slots = []
+        print(temp)
+        rsp = Post_http(temp)
+        dispatcher.utter_message("{}".format(rsp))
+        for slot in tracker.slots:
+                return_slots.append(SlotSet(slot, None))
+        return return_slots
 
-# This is a simple example for a custom action which utters "Hello World!"
-
-from typing import Any, Text, Dict, List
-
-from rasa_sdk import Action, Tracker
-from rasa_sdk.executor import CollectingDispatcher
-
-
-class ActionHelloWorld(Action):
-
-    def name(self) -> Text:
-        return "action_what_is_the_company"
-
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
-        company = tracker.get_slot('company')
-        print(company)
-        print(tracker.latest_message)
-
-        dispatcher.utter_message("%s is a community of passionate individuals whose purpose is to revolutionize software design, creation and delivery, while advocating for positive social change." % (company))
-
-        return []
+class ActionAnalyseYearly(Action):
+   def name(self):
+      return "action_year"
+   def run(self,
+           dispatcher,
+           tracker,
+           domain):
+        value = tracker.get_slot('keywords')
+        temp = ""
+        msg = tracker.latest_message['text']
+        name = tracker.latest_message['intent'].get("name")
+        if(name is None):
+            temp = msg
+        else:
+            if (value):
+                temp = "{} sort:term:asc group by publish_time yearly".format(value)
+            else:
+                temp = msg
+        print(temp)
+        rsp = Post_http(temp)
+        dispatcher.utter_message("{}".format(rsp))
+        return_slots = []
+        print(rsp)
+        for slot in tracker.slots:
+            return_slots.append(SlotSet(slot, None))
+        return return_slots

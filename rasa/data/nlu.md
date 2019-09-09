@@ -1,70 +1,39 @@
-## intent:affirm
-- yes
-- indeed
-- of course
-- that sounds good
-- correct
-- yes, thanks
+## intent:analyse_month
+- [Java](keywords)的月度走势
+- [Java](keywords)这几个月怎么样
+- [java](keywords)这几个月的走势
+- [Java](keywords)这几个月火不火
+- 我想看[Java](keywords)这几个月的情况
+- 我想看[Java](keywords)这几个月的趋势
+- [java](keywords)这几个月的走势怎么样
+- [java](keywords)这几个月的分析
+- [java](keywords)这几个月的情况
+- [java](keywords)这几个月的热度
+- [Java](keywords)近期趋势
+- [Python](keywords)最近趋势如何
+- [keras](keywords)最近怎么样
+- [tensorflow](keywords)最近火不火
+- [AI](keywords)的月度技术趋势
 
-## intent:deny
-- no
-- never
-- I don't think so
-- don't like that
-- no way
-- not really
+## intent:analyse_year
+- [Java](keywords)的年度走势
+- [Java](keywords)这几年怎么样
+- [java](keywords)这几年的走势
+- [java](keywords)这几年火不火
+- 我想看[Java](keywords)这几年的情况
+- 我想看[Java](keywords)这几年的趋势
+- [java](keywords)这几年的走势怎么样
+- [java](keywords)这几年的分析
+- [java](keywords)这几年的情况
+- [java](keywords)这几年的热度
+- 这几年[Java](keywords)的趋势
+- 这几年[Java](keywords)怎么样
+- [Java](keywords)的总体趋势
 
-## intent:goodbye
-- bye
-- goodbye
-- see you around
-- see you later
-
-## intent:greet
-- hey
-- hello
-- hi
-- good morning
-- good evening
-- hey there
-- 你好
-- HI
-- how are you
-- Hi
-
-## intent:mood_great
-- perfect
-- very good
-- great
-- amazing
-- wonderful
-- I am feeling very good
-- I am great
-- I'm good
-- I am good
-
-## intent:mood_unhappy
-- sad
-- very sad
-- unhappy
-- bad
-- very bad
-- awful
-- terrible
-- not very good
-- extremely sad
-- so sad
-
-## intent:what_is_the_company
-- how is [ThoughtWorks](company)
-- what is [thoughtworks](company:ThoughtWorks)
-- what kind of company the [tw](company:ThoughtWorks) is
-- what is [Baidu](company)
-
-## synonym:ThoughtWorks
-- thoughtworks
-- tw
-- TW
-
-## lookup:company
-  data/lookup_tables/companies.txt
+## intent:search
+- [Java](keywords)是什么
+- 什么是[Java](keywords)
+- 什么叫[Java](keywords)
+- 我想看[Java](keywords)的论文
+- [Java](keywords)的文章
+- 关于[Java](keywords)的文章
