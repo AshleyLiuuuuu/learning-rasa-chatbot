@@ -1,6 +1,8 @@
 docker build -t 172.30.3.211:30003/rasa-cn .
 docker push 172.30.3.211:30003/rasa-cn:latest
+kubectl delete -f actions.yml
 kubectl delete -f rasa.yml
+kubectl apply -f actions.yml
 kubectl apply -f rasa.yml
 
 curl --request POST \
