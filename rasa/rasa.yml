@@ -6,7 +6,7 @@ metadata:
   name: rasa-cn
 spec:
   ports:
-    - port: 5005
+    - port: 5055
   type: NodePort
   selector:
     app: rasa-cn
@@ -24,7 +24,7 @@ spec:
         paths:
           - backend:
               serviceName: rasa-cn
-              servicePort: 5005
+              servicePort: 5055
 
 ---
 
@@ -47,10 +47,11 @@ spec:
     spec:
       containers:
         - image: '172.30.3.211:30003/rasa-cn:latest'
+          command: ["rasa","run","--debug","--enable-api","--endpoints","endpoints.yml","--credentials","credentials.yml"]
           imagePullPolicy: "Always"
           name: rasa-cn
           ports:
-            - containerPort: 5005
+            - containerPort: 5055
           resources: {}
           stdin: true
           tty: true

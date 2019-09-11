@@ -11,7 +11,7 @@
 # https://rasa.com/docs/rasa/core/actions/#custom-actions/
 
 action_endpoint:
- url: "http://localhost:5055/webhook"
+ url: "http://rasa.leandata.top:5055/webhook"
 
 # Tracker store which is used to store the conversations.
 # By default the conversations are stored in memory.
@@ -28,7 +28,7 @@ action_endpoint:
 #    type: mongod
 #    url: <url to your mongo instance, e.g. mongodb://localhost:27017>
 #    db: <name of the db within your mongo instance, e.g. rasa>
-#    username: <username used for authentication>
+#    username: <ƒƒusername used for authentication>
 #    password: <password used for authentication>
 
 # Event broker which all conversation events should be streamed to.

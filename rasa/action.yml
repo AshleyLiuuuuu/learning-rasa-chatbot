@@ -6,9 +6,8 @@ metadata:
   name: action-server
 spec:
   ports:
-    - name: "5055"
-      port: 5055
-      targetPort: 5055
+    - port: 5055
+  type: NodePort
   selector:
     app: action-server
 
@@ -48,6 +47,7 @@ spec:
     spec:
       containers:
         - image: '172.30.3.211:30003/rasa-cn:latest'
+          command: ["rasa","run","actions"]
           imagePullPolicy: "Always"
           name: action-server
           ports:
