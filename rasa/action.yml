@@ -13,21 +13,6 @@ spec:
 
 ---
 
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: action-server
-spec:
-  rules:
-    - host: rasa.leandata.top
-      http:
-        paths:
-          - backend:
-              serviceName: action-server
-              servicePort: 5055
-
----
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -47,7 +32,7 @@ spec:
     spec:
       containers:
         - image: '172.30.3.211:30003/rasa-cn:latest'
-          command: ["rasa","run","actions"]
+          command: ["rasa","run","actions","--actions","actions"]
           imagePullPolicy: "Always"
           name: action-server
           ports:

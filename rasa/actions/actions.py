@@ -8,7 +8,7 @@ def Post_http(temp):
     headers = {'content-type':'application/json'}
     body = {'q':temp,'modelName':'dm_articles'}
     _response = requests.post(post_url,data = json.dumps(body),headers = headers)
-    return _response.json()['rows']
+    return _response.json()
 class ActionAnalyseMonthly(Action):
    def name(self):
       return "action_month"
